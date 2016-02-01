@@ -12,13 +12,12 @@ var io = require('socket.io')(server);
 
 app.use(express.static('app'));
 
-// wait to run until something to connect
+// wait to run until something connects
 io.on('connection', function(socket) {
   console.log("Something connected to Socket.io");
   // emit messages
-  socket.emiti("messages", ["Hello", "Hi there", "How are you?"]);
-
+  socket.emit("messages", ["Hello", "Hi there", "How are you?"]);
 })
 
-// Note that server i used here instead of app
+// Note that server is used here instead of app
 server.listen(8080);

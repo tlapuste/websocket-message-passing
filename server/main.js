@@ -5,18 +5,45 @@ var server = require('http').Server(app);
 // 'socket.io' instance called with http-wrapped express
 var io = require('socket.io')(server);
 
-// app.get('/', function(req,res) {
-//   res.send("Hello world.");
-//   console.log("GET-handler for express root.")
-// });
-
 app.use(express.static('app'));
+
+var messages = [{
+  userId: 1,
+  messageId: 10,
+  userName: "Tudor Lapuste",
+  content: {
+    text: "It's me",
+    link: "tlapuste.com"
+  },
+  likedBy:[1],
+  ts: Date.now() - 10000
+},{
+  userId: 2,
+  messageId: 11,
+  userName: "Mario",
+  content: {
+    text: "It's a me, Mario!",
+    link: "mario.com"
+  },
+  likedBy:[2,3],
+  ts: Date.now() - 100000
+},{
+  userId: 3,
+  messageId: 14,
+  userName: "Luigi",
+  content: {
+    text: "Why you never remember my name mama",
+    link: "luigi.com"
+  },
+  likedBy:[],
+  ts: Date.now() - 1000000
+}]
 
 // wait to run until something connects
 io.on('connection', function(socket) {
   console.log("Something connected to Socket.io");
   // emit messages
-  socket.emit("messages", ["Hello", "Hi there", "How are you?"]);
+  socket.emit("messages", messages);
 })
 
 // Note that server is used here instead of app

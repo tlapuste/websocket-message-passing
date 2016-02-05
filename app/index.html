@@ -6,4 +6,17 @@
 <body>
   <h1> My App </h1>
   <div id="messages"></div>
+
+  <form class="" onsubmit="return addMessage(this)">
+    <div class="username">
+      <input type="text" id=username placeholder="Your name" value=Guest required>
+      </div>
+      <div class="link">
+        <input type="text" id=linkAddress placeholder="Link" required>
+      </div>
+      <div class="message-input">
+        <textarea type="text" id="message" placeholder="Enter a message" value="" required></textarea>
+      </div>
+      <input class=sendMessageButton type="submit" name="name" value="Send!">
+  </form>
 </body>

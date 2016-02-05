@@ -17,3 +17,18 @@ socket.on("messages", function(data) {
   }).join(" ");
   document.getElementById("messages").innerHTML = html;
 });
+ 
+
+function addMessage(e){
+  var payload = {
+    userName:document.getElementById("username").value,
+    content: {
+      text:document.getElementById("message").value,
+      link:document.getElementById("linkAddress").value
+    },
+    ts: Date.now()
+  }
+  // pass payload of arbitrary message type "new-message" to already-defined socket
+  socket.emit("new-message", payload);
+  return false;
+}

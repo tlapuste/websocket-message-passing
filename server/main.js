@@ -42,8 +42,14 @@ var messages = [{
 // wait to run until something connects
 io.on('connection', function(socket) {
   console.log("Something connected to Socket.io");
-  // emit messages
+  // emit messages on connection
   socket.emit("messages", messages);
+  socket.on("new-message", function(data) {
+    messages.push(data);
+    // again emit data whenever a new message is added
+    // make it io.sockets.emit to give socket ability to communicate
+    io.sockets.emit("messages",messages);
+  })
 })
 
 // Note that server is used here instead of app

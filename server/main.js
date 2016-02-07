@@ -49,7 +49,16 @@ io.on('connection', function(socket) {
     // again emit data whenever a new message is added
     // make it io.sockets.emit to give socket ability to communicate
     io.sockets.emit("messages",messages);
-  })
+  });
+
+  socket.on("update-message", function(data) {
+    var message = messages.filter(function(message) {
+      return message.messageId == data.messageId;
+    })[0];
+
+    message.likedBy = data.likedBy;
+    io.sockets.emit("messages", messages);
+  });
 })
 
 // Note that server is used here instead of app

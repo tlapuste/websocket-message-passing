@@ -1,6 +1,6 @@
-# Websockets with Socket.io
+# Websockets with Express and Socket.io
 
-Launch with `npm start`
+`npm install && npm start`
 
 Lets you add messages to a collection of messages.
   - collection is initialized with some dummy data

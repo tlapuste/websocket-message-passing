@@ -7,6 +7,7 @@ var io = require('socket.io')(server);
 
 app.use(express.static('app'));
 
+
 var messages = [{
   userId: 1,
   messageId: 10,

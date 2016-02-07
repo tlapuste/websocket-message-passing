@@ -1,6 +1,6 @@
 # Websockets with Express and Socket.io
 
-`npm install && npm start`
+`npm install && npm start` then point browser to `localhost:8080`
 
 Lets you add messages to a collection of messages.
   - collection is initialized with some dummy data
